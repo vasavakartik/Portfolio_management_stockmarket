@@ -3,7 +3,8 @@ const mongoose =  require("mongoose")
 
 const sessionController = require("./controller/session-controller")
 const roleController = require("./controller/role-controller")
-
+const userController =  require("./controller/user-controller")
+const subcriptionController =  require("./controller/subcription-controller")
 
 //middle ware
 const app = express()
@@ -31,6 +32,19 @@ app.post("/roles",roleController.addRole)
 app.get("/roles",roleController.getAllRoles)
 app.delete("/roles/:roleId",roleController.deleteRole)
 app.put("/roles",roleController.updateRole)
+
+//user
+app.post("/users",userController.addUser)
+app.get("/users",userController.getAllUsers)
+app.delete("/users/:userId",userController.deleteUser)
+app.put("/users",userController.updateuser)
+
+
+//subs
+app.post("/subs",subcriptionController.addData)
+app.get("/subs",subcriptionController.displaydata)
+app.delete("/subs/:userId",subcriptionController.deletedata)
+app.put("/subs",subcriptionController.updatedata)
 
 //server 
 
