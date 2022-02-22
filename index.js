@@ -12,6 +12,7 @@ const WatchlistController =  require("./controller/watchlist-controller")
 const portfolioController =  require("./controller/portfolio-controller")
 const UserPortStock = require("./controller/userportstock-controller")
 const AlertController=require("./controller/alert-controller")
+const NotiController =  require("./controller/Noti-controller")
 //middle ware
 const app = express()
 app.use(express.json())
@@ -94,6 +95,12 @@ app.post("/alert",AlertController.addAlert)
 app.get("/alert",AlertController.displayalert)
 app.delete("/alert/:userId",AlertController.deletealert)
 app.put("/alert",AlertController.updatealert)
+
+//notification
+app.post("/notification",NotiController.Notadd)
+app.get("/notification",NotiController.displaynoti)
+app.delete("/notification/:userId",NotiController.deletenoti)
+app.put("/notification",NotiController.updatenoti)
 //server 
 
 app.listen(3000,function(){
