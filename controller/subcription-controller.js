@@ -50,13 +50,13 @@ module.exports.deletedata = function(req,res){
 }
 
 module.exports.updatedata = function(req , res){
-    let userId = req.body.userId
-    let subscribeDate =  req.body.subscribeDate
-    let expdate = req.body.expdate
-    let advRenewdate = req.body.advRenewdate
-    let isAdvRenew = req.body.isAdvRenew
+    let paramuserId = req.body.userId
+    let paramsubscribeDate =  req.body.subscribeDate
+    let paramexpdate = req.body.expdate
+    let paramadvRenewdate = req.body.advRenewdate
+    let paramisAdvRenew = req.body.isAdvRenew
 
-    subsModel.updateOne({_id:userId},{subscribeDate:subscribeDate},{expdate:expdate},{advRenewdate:advRenewdate},{isAdvRenew:isAdvRenew},function(err ,data){
+    subsModel.updateOne({_id:paramuserId},{subscribeDate:paramsubscribeDate,expdate:paramexpdate,advRenewdate:paramadvRenewdate,isAdvRenew:paramisAdvRenew},function(err ,data){
 
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
