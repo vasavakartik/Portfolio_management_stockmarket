@@ -14,6 +14,7 @@ const UserPortStock = require("./controller/userportstock-controller")
 const AlertController=require("./controller/alert-controller")
 const NotiController =  require("./controller/Noti-controller")
 const PayController = require("./controller/pay-controller")
+const ResearchController=require("./controller/research-controller")
 //middle ware
 const app = express()
 app.use(express.json())
@@ -109,6 +110,12 @@ app.post("/pay",PayController.payadd)
 app.get("/pay",PayController.displaypay)
 app.delete("/pay/:userId",PayController.deletepay)
 app.put("/pay",PayController.updatepay)
+
+//reserach
+app.post("/research",ResearchController.researchadd)
+app.get("/research",ResearchController.displayresearch)
+app.delete("/research/:userId",ResearchController.deleteresearch)
+app.put("/research",ResearchController.updateresearch)
 //server 
 
 app.listen(3000,function(){
