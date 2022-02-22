@@ -10,6 +10,7 @@ const StockController =  require("./controller/stock-controller")
 const Feedbackcontroller = require("./controller/feedback-controller")
 const WatchlistController =  require("./controller/watchlist-controller")
 const portfolioController =  require("./controller/portfolio-controller")
+const UserPortStock = require("./controller/userportstock-controller")
 //middle ware
 const app = express()
 app.use(express.json())
@@ -80,6 +81,12 @@ app.post("/portfolio",portfolioController.addPort)
 app.get("/portfolio",portfolioController.displayport)
 app.delete("/portfolio/:userId",portfolioController.deleteport)
 app.put("/portfolio",portfolioController.updateport)
+
+//portuserstock
+app.post("/userportstock",UserPortStock.addupstock)
+app.get("/userportstock",UserPortStock.displayusport)
+app.delete("/userportstock/:userId",UserPortStock.deleteusport)
+app.put("/userportstock",UserPortStock.updateport)
 //server 
 
 app.listen(3000,function(){
