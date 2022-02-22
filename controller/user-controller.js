@@ -38,7 +38,7 @@ module.exports.addUser = function(req ,res){
 
 module.exports.getAllUsers = function (req, res) {
 
-    UserModel.find.populate("role").exec(function (err, data) {
+    UserModel.find().populate("role").exec(function (err, data) {
         if (err) {
             res.json({ msg: "SMW", data: err, status: -1 })//-1  [ 302 404 500 ]
         } else {
@@ -61,16 +61,16 @@ module.exports.deleteUser = function(req,res){
 }
 
 module.exports.updateuser = function(req,res){
-    let userId = req.body.userId
-    let firstName = req.body.firstName
-    let lastName = req.body.lastName
-    let address =req.body.address
-    let password = req.body.password
-    let email = req.body.email
-    let phonenumber = req.body.phonenumber
-    let role = req.body.role
+    let paramuserId = req.body.userId
+    let paramfirstName = req.body.firstName
+    let paramlastName = req.body.lastName
+    let paramaddress =req.body.address
+    let parampassword = req.body.password
+    let paramemail = req.body.email
+    let paramphonenumber = req.body.phonenumber
+    let paramrole = req.body.role
 
-    UserModel.updateOne({_id:userId},{firstName:firstName},{lastName:lastName},{address:address},{password:password},{email:email},{phonenumber:phonenumber},{role:role},function(err ,data){
+    UserModel.updateOne({_id:paramuserId},{firstName:paramfirstName,lastName:paramlastName,address:paramaddress,password:parampassword,email:paramemail,phonenumber:paramphonenumber,role:paramrole},function(err ,data){
 
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})

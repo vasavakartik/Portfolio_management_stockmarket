@@ -5,7 +5,10 @@ const sessionController = require("./controller/session-controller")
 const roleController = require("./controller/role-controller")
 const userController =  require("./controller/user-controller")
 const subcriptionController =  require("./controller/subcription-controller")
-
+const companyController = require("./controller/company-controller")
+const StockController =  require("./controller/stock-controller")
+const Feedbackcontroller = require("./controller/feedback-controller")
+const WatchlistController =  require("./controller/watchlist-controller")
 //middle ware
 const app = express()
 app.use(express.json())
@@ -45,6 +48,31 @@ app.post("/subs",subcriptionController.addData)
 app.get("/subs",subcriptionController.displaydata)
 app.delete("/subs/:userId",subcriptionController.deletedata)
 app.put("/subs",subcriptionController.updatedata)
+
+
+//comp
+app.post("/comp",companyController.addCompany)
+app.get ("/comp",companyController.displayComp)
+app.delete("/comp/:userId",companyController.deleteComp)
+app.put("/comp",companyController.updateComp)
+
+//Stock
+app.post("/stock",StockController.addStock)
+app.get("/stock",StockController.displayStock)
+app.delete("/stock/:userId",StockController.deleteStock)
+app.put("/stock",StockController.updateStock)
+
+//feedback
+app.post("/feedback",Feedbackcontroller.addfeedback)
+app.get("/feedback",Feedbackcontroller.displayfeedback)
+app.delete("/feedback/:userId",Feedbackcontroller.deletefeedback)
+app.put("/feedback",Feedbackcontroller.updateFeedback)
+
+//watchlist
+app.post("/watchlist",WatchlistController.addwatchlist)
+app.get("/watchlist",WatchlistController.displaylist)
+app.delete("/watchlist/:userId",WatchlistController.deletelist)
+app.put("/watchlist",WatchlistController.updatelist)
 
 //server 
 
