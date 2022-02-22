@@ -13,6 +13,7 @@ const portfolioController =  require("./controller/portfolio-controller")
 const UserPortStock = require("./controller/userportstock-controller")
 const AlertController=require("./controller/alert-controller")
 const NotiController =  require("./controller/Noti-controller")
+const PayController = require("./controller/pay-controller")
 //middle ware
 const app = express()
 app.use(express.json())
@@ -101,6 +102,13 @@ app.post("/notification",NotiController.Notadd)
 app.get("/notification",NotiController.displaynoti)
 app.delete("/notification/:userId",NotiController.deletenoti)
 app.put("/notification",NotiController.updatenoti)
+
+
+//paydetails
+app.post("/pay",PayController.payadd)
+app.get("/pay",PayController.displaypay)
+app.delete("/pay/:userId",PayController.deletepay)
+app.put("/pay",PayController.updatepay)
 //server 
 
 app.listen(3000,function(){

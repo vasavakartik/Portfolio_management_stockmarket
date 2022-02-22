@@ -1,21 +1,18 @@
+const PayModel = require("../model/pay-model")
 
-const NotiModel =  require("../model/Noti-model")
-
-module.exports.Notadd = function(req ,res){
+module.exports.payadd = function(req ,res){
     let user = req.body.user
-    let type = req.body.type
-    let content = req.body.content
-    let isRead= req.body.isRead
-    let date= req.body.date
+    let transaction = req .body.transaction
+    let amount = req.body.amount
+    let transactionDate = req.body.transactionDate
 
-    let noti = new NotiModel({
+    let pay =  new PayModel({
         user:user,
-        type:type,
-        content:content,
-        isRead:isRead,
-        date:date
+        transaction:transaction,
+        amount:amount,
+        transactionDate:transactionDate
     })
-    noti.save(function (err, data) {
+    pay.save(function (err, data) {
         if (err) {
             res.json({ msg: "SMW", data: err, status: -1 })//-1  [ 302 404 500 ]
         } else {
@@ -24,8 +21,9 @@ module.exports.Notadd = function(req ,res){
     })
 }
 
-module.exports.displaynoti = function(req ,res){
-    NotiModel.find(function (err, data) {
+
+module.exports.displaypay = function(req ,res){
+    PayModel.find(function (err, data) {
         if (err) {
             res.json({ msg: "SMW", data: err, status: -1 })//-1  [ 302 404 500 ]
         } else {
@@ -34,10 +32,10 @@ module.exports.displaynoti = function(req ,res){
     })
 }
 
-module.exports.deletenoti = function(req ,res){
+module.exports.deletepay = function(req ,res){
     let userId = req.params.userId 
 
-    NotiModel.deleteOne({_id:userId},function (err, data) {
+    PayModel.deleteOne({_id:userId},function (err, data) {
         if (err) {
             res.json({ msg: "SMW", data: err, status: -1 })//-1  [ 302 404 500 ]
         } else {
@@ -45,16 +43,14 @@ module.exports.deletenoti = function(req ,res){
         }
     })
 }
-
-module.exports.updatenoti = function(req,res){
+module.exports.updatepay = function(req,res){
     let paramuserId =req.body.userId
     let paramuser =  req.body.user
-    let paramtype = req.body.type
-    let paramcontent =  req.body.content
-    let paramaisRead =  req.body.isRead
-    let paramdate = req.body.date
+    let paramtransaction = req.body.transaction
+    let paramamount =  req.body.amount
+    let paramtransactionDate =  req.body.transactionDate
 
-    NotiModel.updateOne({_id:paramuserId},{user:paramuser,type:paramtype,content:paramcontent,isRead:paramaisRead,date:paramdate},function(err ,data){
+    PayModel.updateOne({_id:paramuserId},{user:paramuser,transaction:paramtransaction,amount:paramamount,transactionDate:paramtransactionDate},function(err ,data){
         if(err){
             res.json({msg:"Something went wrong!!!",status:-1,data:err})
         }else{
