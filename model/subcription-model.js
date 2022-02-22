@@ -8,14 +8,14 @@ const SubSchema = new mongoose.Schema({
 
     },
     subscribeDate:{
-        type:String
+        type:Date
 
     },
     expdate:{
-        type:String
+        type:Date
     },
     advRenewdate:{
-        type:String
+        type:Date
     },
     isAdvRenew:{
         type:String

@@ -6,6 +6,11 @@ let WatchSchema = new mongoose.Schema({
     },
     Create:{
         type:String
+  
+    },
+    stock:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"stock"
     }
 })
 

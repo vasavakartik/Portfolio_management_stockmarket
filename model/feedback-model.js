@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 let FeedSchema =  new mongoose.Schema({
-    userId:{
+    user:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"user"
     },
