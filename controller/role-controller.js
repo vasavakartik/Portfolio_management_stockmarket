@@ -25,7 +25,7 @@ module.exports.getAllRoles = function(req ,res){
             res.json({msg:"Something is wrong",status:-1,data:err})
         }else{
             res.json({msg:"roles",status:200,data:roles})
-        }
+        }   
     })
 }
 

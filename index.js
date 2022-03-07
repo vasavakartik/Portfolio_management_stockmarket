@@ -17,6 +17,8 @@ const PayController = require("./controller/pay-controller")
 const ResearchController=require("./controller/research-controller")
 //middle ware
 const app = express()
+var cors = require('cors')
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
@@ -118,7 +120,7 @@ app.delete("/research/:userId",ResearchController.deleteresearch)
 app.put("/research",ResearchController.updateresearch)
 //server 
 
-app.listen(3000,function(){
-    console.log("server started on 3000");  
+app.listen(4000,function(){
+    console.log("server started on 4000");  
   })
 
