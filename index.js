@@ -15,6 +15,7 @@ const AlertController=require("./controller/alert-controller")
 const NotiController =  require("./controller/Noti-controller")
 const PayController = require("./controller/pay-controller")
 const ResearchController=require("./controller/research-controller")
+const loginController = require("./controller/login-controller")
 //middle ware
 const app = express()
 var cors = require('cors')
@@ -112,6 +113,9 @@ app.post("/pay",PayController.payadd)
 app.get("/pay",PayController.displaypay)
 app.delete("/pay/:userId",PayController.deletepay)
 app.put("/pay",PayController.updatepay)
+
+//login
+app.post("/log",loginController.addlog)
 
 //reserach
 app.post("/research",ResearchController.researchadd)
